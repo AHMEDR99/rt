@@ -1,0 +1,43 @@
+int main()
+
+{
+
+// select clock source
+clock->CR|=(1<<16);
+
+select clock divider 
+
+clock ->CFGR|=0xA0;
+
+// enable periph
+
+clock ->APB1ENT1|=(1<<10)|(1<<28);
+
+//set pw1_cr reg DPB bit
+Pwr->CR1|=(1<<8);
+
+// write key to wpr reg
+rtc->WPR=0XCA;
+rtc->WPR=0X53;
+
+// select LSE clcok source
+clock->BDCR|=(1<<0)|(1<<8)|(1<<15);
+
+while ((clock->BDCR)&(1<<1);
+
+// set clock freq
+rtc->PRER |=((1<<5)|(1<<21));
+
+// set date and time .....
+
+// select hour/date format or AM/PM
+
+rtc->CR|=(1<<6);
+rtc->ISR&=~(1<<7);
+delay 1ms
+
+
+
+
+
+}
